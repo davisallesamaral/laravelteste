@@ -24,14 +24,21 @@
                 <li><a href="/produtos/form">Novo</a></li>
             </ul>
 
+
+            <ul class="nav navbar-nav navbar-right">
+  @if (Auth::guest())
+    <li><a href="/login">Login</a></li>
+    <li><a href="/register">Register</a></li>
+  @else
+    <li>{{ Auth::user()->name }} </li>
+    <li><a href="/logout">Logout</a></li>
+  @endif
+</ul>
         </div>
     </nav>
 
     @yield('conteudo')
 
-    <footer class="footer">
-        <p>© Curso de Laravel do Alura.</p>
-    </footer>
 
 </div>
 </body>

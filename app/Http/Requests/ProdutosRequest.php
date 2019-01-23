@@ -1,9 +1,6 @@
 <?php
-
 namespace estoque\Http\Requests;
-
 use Illuminate\Foundation\Http\FormRequest;
-
 class ProdutosRequest extends FormRequest
 {
     /**
@@ -15,7 +12,6 @@ class ProdutosRequest extends FormRequest
     {
         return true;
     }
-
     /**
      * Get the validation rules that apply to the request.
      *
@@ -29,7 +25,6 @@ class ProdutosRequest extends FormRequest
            'valor' => 'required|numeric'
         ];
     }
-
     public function messages()
     {
         return [
