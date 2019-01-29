@@ -4,7 +4,7 @@ namespace estoque;
 
 use Illuminate\Database\Eloquent\Model;
 
-class categoria extends Model
+class tipo extends Model
 {
     public $timestamps = false;
     protected $fillable = array('name');

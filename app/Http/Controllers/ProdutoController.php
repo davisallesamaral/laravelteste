@@ -4,6 +4,8 @@ namespace estoque\Http\Controllers;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Request;
 use estoque\Produto;
+use estoque\Categoria;
+use estoque\Tipo;
 use estoque\Http\Requests\ProdutosRequest;
 
 class ProdutoController extends Controller {
@@ -13,7 +15,6 @@ class ProdutoController extends Controller {
         $this->middleware('auth', 
         ['only' => ['form', 'remove']]);
     }
-
 
     public function lista(){
         $produtos = Produto::all();
@@ -33,17 +34,20 @@ class ProdutoController extends Controller {
         if(empty($resposta)) {
             return "Esse produto não existe";
         }
-        return view('produto.formularioEdit')->with('p', $resposta);
+        return view('produto.formularioEdit')->with('p', $resposta,'produtos')->with('categorias', Categoria::all())->with('tipos', Tipo::all());
     }
+
     public function update($id, ProdutosRequest $request){
         $produto = Produto::find($id);
         $params = Request::all();// carrega informações digitadas na view
         $produto->update($params);
         return redirect()->action('ProdutoController@lista')->withInput(Request::only('nomeAlt'));
     }
+
     public function form(){
-        return view('produto.formulario');
+        return view('produto.formulario')->with('categorias', Categoria::all())->with('tipos', Tipo::all());
     }
+
     public function insert(ProdutosRequest $request){
         // validate
         // read more on validation at http://laravel.com/docs/validation
@@ -52,6 +56,7 @@ class ProdutoController extends Controller {
             ->action('ProdutoController@lista')
             ->withInput(Request::only('nome'));
     }
+
     public function listaJson(){
         $produtos = Produto::all();
         return response()->json($produtos);

@@ -32,6 +32,25 @@ Route::post('/users/update/{id}', 'UserController@update')->where('id', '[0-9]+'
 Route::get('/produtos/json', 'UserController@listaJson');
 Route::get('/users/remove/{id}', 'UserController@remove')->where('id', '[0-9]+');
 
+//CATEGORIAS
+Route::get('/categorias', 'CategoriaController@lista');
+Route::get('/categorias/mostra/{id}', 'CategoriaController@mostra')->where('id', '[0-9]+');
+Route::get('/categorias/form/', 'CategoriaController@form');
+Route::post('/categorias/insert', 'CategoriaController@insert');
+Route::get('/categorias/edit/{id}', 'CategoriaController@edit')->where('id', '[0-9]+');
+Route::post('/categorias/update/{id}', 'CategoriaController@update')->where('id', '[0-9]+');
+Route::get('/categorias/json', 'CategoriaController@listaJson');
+Route::get('/categorias/remove/{id}', 'CategoriaController@remove')->where('id', '[0-9]+');
+
+Route::get('/tipos', 'TipoController@lista');
+Route::get('/tipos/mostra/{id}', 'TipoController@mostra')->where('id', '[0-9]+');
+Route::get('/tipos/form/', 'TipoController@form');
+Route::post('/tipos/insert', 'TipoController@insert');
+Route::get('/tipos/edit/{id}', 'TipoController@edit')->where('id', '[0-9]+');
+Route::post('/tipos/update/{id}', 'TipoController@update')->where('id', '[0-9]+');
+Route::get('/tipos/json', 'TipoController@listaJson');
+Route::get('/tipos/remove/{id}', 'TipoController@remove')->where('id', '[0-9]+');
+
 
 Route::get('/login', 'LoginController@login');
 

@@ -37,10 +37,24 @@
             <label>Tamanho</label>
             <input name="tamanho" class="form-control" required value="{{ old('tamanho') }}"/>          
         </div>
+
         <div class="form-group">
             <label>Tipo</label>
-            <input name="tipo" class="form-control" required value="{{ old('tipo') }}"/>  
-        </div>      
+            <select name="tipo_id" class="form-control">
+                @foreach($tipos as $c)
+                <option value="{{$c->id}}">{{$c->name}}</option>
+                @endforeach
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label>Categoria</label>
+            <select name="categoria_id" class="form-control">
+                @foreach($categorias as $c)
+                <option value="{{$c->id}}">{{$c->name}}</option>
+                @endforeach
+            </select>
+        </div>
         <button type="submit"
                 class="btn btn-primary btn-block">Adicionar</button>
     </form>
